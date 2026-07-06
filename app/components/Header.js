@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import logo from "@/public/logo.jpeg";
 
 const navLinks = [
@@ -10,6 +13,8 @@ const navLinks = [
 ];
 
 export default function Header() {
+  const pathname = usePathname();
+
   return (
     <header className="header">
       <Link className="brand" href="/">
@@ -17,11 +22,19 @@ export default function Header() {
       </Link>
 
       <nav className="nav">
-        {navLinks.map(({ label, href }) => (
-          <Link key={label} href={href}>
-            {label}
-          </Link>
-        ))}
+        {navLinks.map(({ label, href }) => {
+          const isActive = href !== "#" && pathname === href;
+          return (
+            <Link
+              key={label}
+              href={href}
+              className={isActive ? "active" : undefined}
+              aria-current={isActive ? "page" : undefined}
+            >
+              {label}
+            </Link>
+          );
+        })}
       </nav>
 
       <a className="btn btn-pill header-cta" href="#">

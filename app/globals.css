@@ -71,6 +71,14 @@ body {
   color: var(--green);
 }
 
+/* active link: pale-green pill behind the current route's link */
+.nav a.active {
+  color: var(--green);
+  background: rgba(27, 67, 50, 0.1);
+  padding: 8px 16px;
+  border-radius: 999px;
+}
+
 /* ---------- Buttons ---------- */
 .btn {
   display: inline-flex;

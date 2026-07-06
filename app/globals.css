@@ -461,12 +461,13 @@ body {
   position: absolute;
   left: 50%;
   top: 0;
-  transform: translateX(-50%) rotate(90deg);
-  color: var(--green);
-  background: var(--cream);
-  padding: 8px 0;
+  width: 60px;
+  height: auto;
+  transform: translateX(-50%);
   z-index: 2;
   transition: top 0.12s linear;
+  /* subtle drop-shadow so it reads as sitting "on" the road */
+  filter: drop-shadow(0 6px 8px rgba(20, 17, 13, 0.35));
 }
 
 .os-chapter {

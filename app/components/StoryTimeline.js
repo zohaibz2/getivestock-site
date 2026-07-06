@@ -1,7 +1,9 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Tractor, ChevronDown } from "lucide-react";
+import Image from "next/image";
+import { ChevronDown } from "lucide-react";
+import tractorImg from "@/public/tractor.png";
 
 const chapters = [
   {
@@ -95,12 +97,15 @@ export default function StoryTimeline() {
 
   return (
     <ol className="os-timeline" ref={timelineRef}>
-      <Tractor
+      <Image
         className="os-tractor"
-        size={58}
-        strokeWidth={1.6}
+        src={tractorImg}
+        alt=""
         aria-hidden="true"
-        style={{ top: `calc(${progress} * (100% - 72px))` }}
+        width={60}
+        height={60}
+        priority
+        style={{ top: `calc(${progress} * (100% - 60px))` }}
       />
 
       {chapters.map((chapter, i) => {

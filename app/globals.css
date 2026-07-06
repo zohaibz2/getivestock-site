@@ -463,7 +463,8 @@ body {
   top: 0;
   width: 60px;
   height: auto;
-  transform: translateX(-50%);
+  /* rotate 90deg clockwise so the right-facing tractor points down the line */
+  transform: translateX(-50%) rotate(90deg);
   z-index: 2;
   transition: top 0.12s linear;
   /* subtle drop-shadow so it reads as sitting "on" the road */

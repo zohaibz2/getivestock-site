@@ -2,9 +2,9 @@ import Header from "../components/Header";
 import StoryTimeline from "../components/StoryTimeline";
 
 export const metadata = {
-  title: "Our Story — Maveshi Farms",
+  title: "Our Story — Getlivestock",
   description:
-    "Seven chapters, from 4,000 rupees of Eidi to a farm of his own — the journey behind Maveshi Farms.",
+    "Seven chapters, from 4,000 rupees of Eidi to a farm of his own — the journey behind Getlivestock.",
 };
 
 export default function OurStoryPage() {

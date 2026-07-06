@@ -16,7 +16,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata = {
-  title: "Maveshi Farms — The Future of Livestock Farming",
+  title: "Getlivestock — The Future of Livestock Farming",
   description:
     "A business student's journey toward a smarter, healthier future for goat farming.",
 };

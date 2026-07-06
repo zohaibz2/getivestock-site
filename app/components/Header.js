@@ -18,7 +18,7 @@ export default function Header() {
   return (
     <header className="header">
       <Link className="brand" href="/">
-        <Image src={logo} alt="Maveshi Farms logo" width={88} height={88} priority />
+        <Image src={logo} alt="Getlivestock logo" width={88} height={88} priority />
       </Link>
 
       <nav className="nav">

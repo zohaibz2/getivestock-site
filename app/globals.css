@@ -191,6 +191,159 @@ body {
   }
 }
 
+/* ---------- Our Story / Timeline ---------- */
+.story {
+  background: var(--cream);
+  margin-top: 96px;
+  padding-top: 8px;
+  scroll-margin-top: 24px;
+}
+
+.story-head {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.story-head .eyebrow {
+  margin-bottom: 16px;
+}
+
+.story-title {
+  font-family: var(--font-playfair), Georgia, "Times New Roman", serif;
+  font-weight: 600;
+  font-size: clamp(1.9rem, 3.4vw, 2.75rem);
+  color: var(--green);
+  letter-spacing: -0.01em;
+}
+
+.timeline {
+  position: relative;
+  list-style: none;
+  max-width: 960px;
+  margin: 0 auto;
+  padding-top: 96px; /* room for the tractor above the line */
+}
+
+/* the single vertical line down the center */
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 84px;
+  bottom: 6px;
+  width: 2px;
+  background: var(--green);
+  transform: translateX(-50%);
+}
+
+/* the tractor sits on the line at the top, pointing upward */
+.timeline-tractor {
+  position: absolute;
+  left: 50%;
+  top: 6px;
+  transform: translateX(-50%) rotate(-90deg);
+  color: var(--green);
+  background: var(--cream);
+  padding: 6px 0;
+}
+
+.chapter {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+  padding-bottom: 72px;
+}
+
+.chapter:last-child {
+  padding-bottom: 0;
+}
+
+.chapter-side {
+  padding-top: 2px;
+}
+
+/* default: heading on the LEFT, description on the RIGHT */
+.chapter-heading {
+  grid-column: 1;
+  text-align: right;
+  padding-right: 52px;
+}
+
+.chapter-desc {
+  grid-column: 2;
+  text-align: left;
+  padding-left: 52px;
+}
+
+/* flipped: heading on the RIGHT, description on the LEFT */
+.chapter.flip .chapter-heading {
+  grid-column: 2;
+  text-align: left;
+  padding-right: 0;
+  padding-left: 52px;
+}
+
+.chapter.flip .chapter-desc {
+  grid-column: 1;
+  grid-row: 1;
+  text-align: right;
+  padding-left: 0;
+  padding-right: 52px;
+}
+
+.chapter-label {
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--green);
+  opacity: 0.75;
+  margin-bottom: 8px;
+}
+
+.chapter-title {
+  font-family: var(--font-playfair), Georgia, "Times New Roman", serif;
+  font-weight: 600;
+  font-size: 1.5rem;
+  line-height: 1.15;
+  color: var(--green);
+  margin-bottom: 6px;
+}
+
+.chapter-year {
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--green);
+}
+
+.chapter-desc p {
+  color: var(--gray);
+  font-size: 0.9675rem;
+  line-height: 1.65;
+  max-width: 26rem;
+  margin-left: auto; /* keep body copy hugging the center line */
+}
+
+.chapter.flip .chapter-desc p {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+/* green dot where each chapter meets the center line */
+.chapter-dot {
+  position: absolute;
+  left: 50%;
+  top: 4px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: var(--green);
+  border: 3px solid var(--cream);
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
 @media (max-width: 520px) {
   .page {
     padding: 20px 20px 40px;
@@ -213,5 +366,57 @@ body {
   .hero-cta {
     width: 100%;
     justify-content: center;
+  }
+}
+
+/* ---------- Timeline: stack on one side of the line on mobile ---------- */
+@media (max-width: 700px) {
+  .story {
+    margin-top: 72px;
+  }
+
+  .timeline {
+    padding-left: 8px;
+  }
+
+  /* move the vertical line to the left edge */
+  .timeline::before {
+    left: 22px;
+  }
+
+  .timeline-tractor {
+    left: 22px;
+  }
+
+  /* every chapter becomes a single column that hangs off the left line */
+  .chapter {
+    grid-template-columns: 1fr;
+    padding-bottom: 48px;
+  }
+
+  .chapter-heading,
+  .chapter.flip .chapter-heading,
+  .chapter-desc,
+  .chapter.flip .chapter-desc {
+    grid-column: 1;
+    grid-row: auto;
+    text-align: left;
+    padding-left: 52px;
+    padding-right: 0;
+  }
+
+  .chapter-desc {
+    margin-top: 12px;
+  }
+
+  .chapter-desc p,
+  .chapter.flip .chapter-desc p {
+    margin-left: 0;
+    margin-right: 0;
+    max-width: none;
+  }
+
+  .chapter-dot {
+    left: 22px;
   }
 }

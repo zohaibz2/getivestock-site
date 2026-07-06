@@ -1,14 +1,7 @@
 import Image from "next/image";
 import { Tractor } from "lucide-react";
-import logo from "@/public/logo.jpeg";
+import Header from "./components/Header";
 import hero from "@/public/hero.jpeg";
-
-const navLinks = [
-  { label: "Our Story", href: "#our-story" },
-  { label: "Our Ecosystem", href: "#" },
-  { label: "Impact", href: "#" },
-  { label: "Contact", href: "#" },
-];
 
 // Ordered Chapter 1 -> Chapter 7. Rendered top-to-bottom as 2024 -> 2017
 // (newest on top) so the story reads bottom-to-top up the road.
@@ -60,26 +53,7 @@ const chapters = [
 export default function Home() {
   return (
     <div className="page">
-      <header className="header">
-        <a className="brand" href="#">
-          <Image src={logo} alt="Maveshi Farms logo" width={88} height={88} priority />
-        </a>
-
-        <nav className="nav">
-          {navLinks.map(({ label, href }) => (
-            <a key={label} href={href}>
-              {label}
-            </a>
-          ))}
-        </nav>
-
-        <a className="btn btn-pill header-cta" href="#">
-          Explore Our Ecosystem
-          <span className="arrow" aria-hidden="true">
-            &rarr;
-          </span>
-        </a>
-      </header>
+      <Header />
 
       <main className="hero">
         <div className="hero-text">

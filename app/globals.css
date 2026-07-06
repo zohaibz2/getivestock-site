@@ -420,3 +420,230 @@ body {
     left: 22px;
   }
 }
+
+/* ================================================================
+   /our-story page — expandable chapter cards timeline
+   ================================================================ */
+.story-page {
+  padding-top: 8px;
+}
+
+.story-intro {
+  color: var(--gray);
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 34rem;
+  margin: 16px auto 0;
+}
+
+.os-timeline {
+  position: relative;
+  list-style: none;
+  max-width: 980px;
+  margin: 64px auto 0;
+  padding: 0;
+}
+
+/* single vertical line down the center */
+.os-timeline::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--green);
+  transform: translateX(-50%);
+}
+
+/* the tractor rides the line; its `top` is set inline from scroll progress */
+.os-tractor {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%) rotate(90deg);
+  color: var(--green);
+  background: var(--cream);
+  padding: 8px 0;
+  z-index: 2;
+  transition: top 0.12s linear;
+}
+
+.os-chapter {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+  padding: 20px 0;
+}
+
+/* green dot where the chapter meets the center line */
+.os-dot {
+  position: absolute;
+  left: 50%;
+  top: 38px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--green);
+  border: 3px solid var(--cream);
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+/* alternate the card left / right of the line */
+.os-card {
+  grid-column: 1;
+  margin-right: 46px;
+  background: #f8f7f3;
+  border: 1px solid rgba(27, 67, 50, 0.12);
+  border-radius: 16px;
+  box-shadow: 0 18px 40px -28px rgba(20, 17, 13, 0.35);
+  overflow: hidden;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.os-chapter.flip .os-card {
+  grid-column: 2;
+  margin-right: 0;
+  margin-left: 46px;
+}
+
+.os-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(27, 67, 50, 0.22);
+}
+
+.os-card.open {
+  border-color: rgba(27, 67, 50, 0.3);
+  box-shadow: 0 26px 55px -30px rgba(20, 17, 13, 0.45);
+}
+
+.os-card-head {
+  display: block;
+  position: relative;
+  width: 100%;
+  text-align: left;
+  padding: 22px 54px 22px 26px;
+  background: none;
+  border: none;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+.os-label {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--green);
+  opacity: 0.7;
+  margin-bottom: 8px;
+}
+
+.os-title {
+  font-family: var(--font-playfair), Georgia, "Times New Roman", serif;
+  font-weight: 600;
+  font-size: 1.5rem;
+  line-height: 1.15;
+  color: var(--green);
+  margin-bottom: 4px;
+}
+
+.os-year {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--green);
+  margin-bottom: 12px;
+}
+
+.os-teaser {
+  color: var(--gray);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.os-chevron {
+  position: absolute;
+  top: 24px;
+  right: 22px;
+  color: var(--green);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.os-card.open .os-chevron {
+  transform: rotate(180deg);
+}
+
+/* smooth height animation via grid-template-rows 0fr -> 1fr */
+.os-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.os-card.open .os-body {
+  grid-template-rows: 1fr;
+}
+
+.os-body-inner {
+  overflow: hidden;
+}
+
+.os-body-inner p {
+  margin: 0;
+  padding: 2px 26px 24px;
+  color: var(--gray);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.os-card.open .os-body-inner p {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.12s;
+}
+
+/* mobile: stack every card on one side of the line */
+@media (max-width: 700px) {
+  .os-timeline {
+    margin-top: 40px;
+  }
+
+  .os-timeline::before,
+  .os-tractor,
+  .os-dot {
+    left: 22px;
+  }
+
+  .os-chapter {
+    grid-template-columns: 1fr;
+    padding: 12px 0;
+  }
+
+  .os-card,
+  .os-chapter.flip .os-card {
+    grid-column: 1;
+    margin-left: 52px;
+    margin-right: 0;
+  }
+
+  .os-dot {
+    top: 34px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .os-tractor,
+  .os-body,
+  .os-chevron,
+  .os-body-inner p,
+  .os-card {
+    transition: none;
+  }
+}

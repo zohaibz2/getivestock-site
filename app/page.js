@@ -5,12 +5,6 @@ import ribbon from "@/public/ribbon.jpg";
 import plat from "@/public/plat.jpg";
 import logo from "@/public/logo.jpeg";
 
-const asks = [
-  "Buying for Qurbani in Karachi and want animals raised, not flipped.",
-  "Investing in the herd, with a return and a timeline written down.",
-  "Working the land in Mirpurkhas — feed, veterinary, transport.",
-  "Here for the schooling side of it, for the children in the village.",
-];
 
 export default function Home() {
   return (
@@ -102,69 +96,6 @@ export default function Home() {
               <p className="place">Karachi</p>
               <p className="role">Where it is paid for</p>
             </div>
-          </div>
-
-          <div className="gaps">
-            <div className="gap-r">
-              <p className="what">Tomatoes, per kilo</p>
-              <p className="pair">
-                <span className="lo">Rs 10</span>
-                <span className="arrow">→</span>
-                <span className="hi">Rs 200</span>
-              </p>
-              <p className="say">
-                Twenty times the price, one road apart. None of it goes back to
-                the grower.
-              </p>
-            </div>
-            <div className="gap-r">
-              <p className="what">Goats at Qurbani</p>
-              <p className="pair">
-                <span className="lo">Village</span>
-                <span className="arrow">→</span>
-                <span className="hi">×2 in the city</span>
-              </p>
-              <p className="say">
-                Sell where the buyers are, and the same animal is worth double.
-                That is the whole thesis.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ---------------- 03 WORK WITH US ---------------- */}
-      <section className="talk" id="talk">
-        <div className="wrap talk-grid">
-          <div>
-            <div className="sec-head">
-              <span className="sec-num">03</span>
-              <h2 className="sec-title">Rebuild number six</h2>
-            </div>
-            <p className="big">
-              There is land in Mirpurkhas now, bought in secret in 2024, and
-              five rebuilds left on the pact. If any of the following is you,
-              get in touch.
-            </p>
-            <div className="cta-row">
-              {/* Not linked yet. To wire up, swap <button> for:
-                  <a className="btn solid" href="mailto:you@yourdomain.com">…</a> */}
-              <button className="btn solid" type="button">
-                Start a conversation
-              </button>
-              <button className="btn ghost" type="button">
-                Read the seven chapters
-              </button>
-            </div>
-          </div>
-
-          <div className="asks">
-            {asks.map((text, i) => (
-              <div key={i}>
-                <span>{String(i + 1).padStart(2, "0")}</span>
-                <p>{text}</p>
-              </div>
-            ))}
           </div>
         </div>
       </section>

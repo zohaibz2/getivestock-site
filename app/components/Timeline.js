@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import founder from "@/public/hero.jpeg";
 import tractorImg from "@/public/tractor.png";
 
 const chapters = [
@@ -97,14 +96,15 @@ export default function Timeline() {
     };
     poseRef.current = poseAtY;
 
-    // pin each chapter dot onto the road at that card's vertical position
+    // pin each chapter dot onto the road, using the SAME pose math as the tractor
     const layoutDots = () => {
       const wr = wrap.getBoundingClientRect();
       const next = [];
       wrap.querySelectorAll(".tli").forEach((li) => {
         const cyc = li.getBoundingClientRect().top - wr.top + 30;
         const fy = Math.max(0, Math.min(1, cyc / wr.height));
-        next.push({ left: xAtY(fy), topPx: cyc });
+        const pt = poseAtY(fy);
+        next.push({ left: pt.left, topPx: pt.topPx });
       });
       setDots(next);
     };
@@ -140,34 +140,14 @@ export default function Timeline() {
   return (
     <section className="chapters" id="chapters">
       <div className="wrap">
-        <div className="ch-head">
-          <figure className="portrait">
-            <i className="corner tl" />
-            <i className="corner tr" />
-            <i className="corner bl" />
-            <i className="corner br" />
-            <div className="imgbox">
-              <Image
-                src={founder}
-                alt="The founder of Narejo Farms holding two of his goats"
-                sizes="(max-width: 1080px) 280px, 300px"
-                placeholder="blur"
-              />
-            </div>
-            <figcaption>Mirpurkhas, Sindh</figcaption>
-          </figure>
-
-          <div>
-            <div className="sec-head">
-              <span className="sec-num">01</span>
-              <h2 className="sec-title">Seven chapters</h2>
-            </div>
-            <p className="ch-intro">
-              Eight years, told in his own words. Open any chapter to read it in
-              full.
-            </p>
-          </div>
+        <div className="sec-head">
+          <span className="sec-num">01</span>
+          <h2 className="sec-title">Seven chapters</h2>
         </div>
+        <p className="ch-intro">
+          Eight years, told in his own words. Open any chapter to read it in
+          full.
+        </p>
 
         <div className="tl-wrap" ref={listRef}>
           <svg
@@ -198,19 +178,11 @@ export default function Timeline() {
             {chapters.map((c, i) => {
               const open = openId === c.n;
               const bodyId = `tl-body-${c.n}`;
-              const dot = dots[i];
               return (
                 <li
                   key={c.n}
                   className={`tli${i % 2 ? " flip" : ""}${open ? " open" : ""}`}
                 >
-                  <span
-                    className="dot"
-                    aria-hidden="true"
-                    style={
-                      dot ? { left: `${dot.left}%`, top: `${dot.topPx}px` } : undefined
-                    }
-                  />
                   <div className="tle">
                     <button
                       type="button"
@@ -236,6 +208,16 @@ export default function Timeline() {
               );
             })}
           </ol>
+
+          <div className="dot-layer" aria-hidden="true">
+            {dots.map((d, i) => (
+              <span
+                key={i}
+                className="dot"
+                style={{ left: `${d.left}%`, top: `${d.topPx}px` }}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>

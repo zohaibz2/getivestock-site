@@ -26,7 +26,7 @@ img{display:block;max-width:100%}
 a{color:inherit}
 .wrap{max-width:var(--max);margin:0 auto;padding-inline:var(--gut)}
 
-.eyebrow{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase}
+.eyebrow{font-family:var(--body);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase}
 .sec-head{display:flex;align-items:baseline;gap:18px;flex-wrap:wrap}
 .sec-num{font-family:var(--mono);font-size:11px;letter-spacing:.2em;opacity:.55}
 .sec-title{font-family:var(--display);font-weight:800;font-size:clamp(2rem,5vw,3.4rem);line-height:.98;letter-spacing:-.025em}
@@ -37,8 +37,8 @@ a{color:inherit}
 .top-in{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:14px clamp(20px,3vw,34px)}
 .mark{display:flex;align-items:center;gap:12px;text-decoration:none;flex-shrink:0}
 .mark-sq{width:36px;height:36px;flex-shrink:0;border:1.5px solid var(--brass);border-radius:50%;display:grid;place-items:center;font-family:var(--mono);font-size:11px;font-weight:700;color:var(--brass)}
-.mark-txt{display:block;font-family:var(--display);font-weight:800;font-size:1.06rem;letter-spacing:-.01em;line-height:1}
-.mark-sub{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;opacity:.55;margin-top:3px}
+.mark-txt{display:block;font-family:var(--display);font-weight:600;font-size:1.06rem;letter-spacing:-.01em;line-height:1}
+.mark-sub{display:block;font-family:var(--body);font-weight:400;font-size:11px;letter-spacing:.02em;opacity:.6;margin-top:3px}
 .top nav{display:flex;align-items:center;gap:30px}
 .top nav a{font-family:var(--body);font-weight:500;font-size:1rem;letter-spacing:0;text-decoration:none;color:var(--paper);opacity:.92;transition:opacity .18s,color .18s}
 .top nav a:hover,.top nav a:focus-visible{opacity:1;color:var(--brass)}
@@ -47,9 +47,10 @@ a{color:inherit}
 
 /* ============ HERO (paper poster) ============ */
 .hero{background:var(--paper);overflow:hidden}
+.hero .hero-copy{padding-top:8px}
 .hero-grid{display:grid;grid-template-columns:1fr minmax(300px,46%);gap:clamp(24px,4vw,52px);align-items:center;min-height:clamp(560px,72vh,860px)}
 .hero-copy{padding-block:clamp(44px,6vw,72px);position:relative;z-index:2}
-.hero .eyebrow{color:var(--bronze);margin-bottom:26px}
+.hero .eyebrow{color:var(--bronze);margin-bottom:20px}
 .h1{font-family:var(--display);font-weight:800;font-size:clamp(2.7rem,7.6vw,5.4rem);line-height:.9;letter-spacing:-.038em;text-wrap:balance}
 .h1 em{font-style:normal;color:var(--bronze)}
 .hero-lede{font-family:var(--body);font-weight:300;font-size:clamp(1.05rem,1.7vw,1.3rem);line-height:1.5;max-width:33ch;margin-top:26px;color:rgba(18,23,16,.74)}
@@ -88,7 +89,8 @@ a{color:inherit}
   transform:translate(-50%,-50%) rotate(90deg);
   filter:saturate(.7) drop-shadow(0 5px 7px rgba(18,23,16,.3));will-change:transform}
 .tli{position:relative;display:grid;grid-template-columns:1fr 1fr;align-items:start}
-.dot{position:absolute;left:50%;top:30px;width:11px;height:11px;border-radius:50%;background:var(--bronze);border:3px solid var(--chalk);transform:translate(-50%,-50%);z-index:2}
+.dot-layer{position:absolute;inset:0;pointer-events:none;z-index:2}
+.dot{position:absolute;width:11px;height:11px;border-radius:50%;background:var(--bronze);border:3px solid var(--chalk);transform:translate(-50%,-50%)}
 .tle{grid-column:1;padding-right:56px;text-align:right}
 .tli.flip .tle{grid-column:2;padding-right:0;padding-left:56px;text-align:left}
 .tlb{display:block;width:100%;background:none;border:none;font:inherit;color:inherit;cursor:pointer;text-align:inherit;padding:20px 0 0}
@@ -105,15 +107,15 @@ a{color:inherit}
 
 /* ============ QUOTE BAND ============ */
 .band{background:var(--field);color:var(--paper);padding-block:clamp(48px,7vw,86px)}
-.band-in{max-width:46ch}
-.band-in::before{content:"";display:block;width:52px;height:1px;background:var(--brass);margin-bottom:26px}
+.band-in{max-width:46ch;margin-inline:auto;text-align:center}
+.band-in::before{content:"";display:block;width:52px;height:1px;background:var(--brass);margin:0 auto 26px}
 .band-q{font-family:var(--display);font-weight:600;font-size:clamp(1.45rem,3.5vw,2.45rem);line-height:1.16;letter-spacing:-.022em}
 .band-a{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--brass);margin-top:20px}
 
 /* ============ CORRIDOR (paper + survey plat) ============ */
 .mission{background:var(--paper);padding-block:clamp(56px,8vw,96px) clamp(48px,7vw,88px)}
-.mission .sec-head{margin-bottom:18px}
-.mission-lede{font-family:var(--body);font-weight:300;font-size:clamp(1.06rem,1.7vw,1.28rem);line-height:1.55;max-width:52ch;color:rgba(18,23,16,.74)}
+.mission .sec-head{margin-bottom:18px;justify-content:center}
+.mission-lede{font-family:var(--body);font-weight:300;font-size:clamp(1.06rem,1.7vw,1.28rem);line-height:1.55;max-width:52ch;margin-inline:auto;text-align:center;color:rgba(18,23,16,.74)}
 .plat{position:relative;margin-block:clamp(26px,4vw,44px)}
 .plat>img{width:100%;height:auto}
 .pin{position:absolute;z-index:2}
@@ -197,7 +199,6 @@ a{color:inherit}
   .dot{left:20px!important}
   .tli{grid-template-columns:1fr}
   .tle,.tli.flip .tle{grid-column:1;padding-left:54px;padding-right:0;text-align:left}
-  .dot{top:32px}
   .tractor{width:44px}
 }
 @media (max-width:760px){

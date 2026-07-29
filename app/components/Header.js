@@ -26,7 +26,7 @@ export default function Header() {
             ))}
           </nav>
 
-          <a className="top-cta" href="#talk">
+          <a className="top-cta" href="#mission">
             Work with us
           </a>
         </div>

@@ -33,14 +33,6 @@ export default function Home() {
             </p>
 
             <div className="pact">
-              <div className="tally" aria-hidden="true">
-                {Array.from({ length: 10 }, (_, i) => (
-                  <i key={i} className={i < 5 ? "spent" : undefined} />
-                ))}
-              </div>
-              <p className="tally-cap">
-                <b>5 of 10</b> · halfway through the promise
-              </p>
               <p className="pact-quote">
                 {"“I made a pact with myself: I would not quit until I had rebuilt this business from scratch at least 10 times.”"}
                 <span>Chapter 3 · 2020</span>

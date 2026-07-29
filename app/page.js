@@ -3,7 +3,6 @@ import Header from "./components/Header";
 import Timeline from "./components/Timeline";
 import ribbon from "@/public/ribbon.jpg";
 import plat from "@/public/plat.jpg";
-import founder from "@/public/hero.jpeg";
 import logo from "@/public/logo.jpeg";
 
 const asks = [

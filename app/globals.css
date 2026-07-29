@@ -2,8 +2,8 @@
   --field:#17251A;
   --moss:#3E5233;
   --moss-lt:#7A9660;
-  --paper:#EDDFC5;      /* matched to the artwork paper exactly */
-  --chalk:#F6EFDF;
+  --paper:#FFFFFF;      /* pure white, matched to the new artwork */
+  --chalk:#FFFFFF;
   --ink:#121710;
   --brass:#C9A227;      /* gold — dark backgrounds only */
   --bronze:#7A5E0F;     /* gold ink — passes contrast on paper */
@@ -114,10 +114,10 @@ a{color:inherit}
 .pin{position:absolute;z-index:2}
 .pin .place{font-family:var(--display);font-weight:800;font-size:clamp(.95rem,2vw,1.6rem);letter-spacing:-.02em;line-height:1.04}
 .pin .role{font-family:var(--mono);font-size:clamp(8.5px,.75vw,10px);letter-spacing:.15em;text-transform:uppercase;color:var(--ink);margin-top:6px}
-.pin{background:rgba(240,229,207,.93);padding:10px 14px}
-.pin-a{left:13.2%;top:19.1%;transform:translateY(-50%);margin-left:28px;border-left:2px solid var(--bronze)}
-.pin-b{left:84.9%;top:80.8%;transform:translate(-100%,-50%);margin-left:-28px;text-align:right;border-right:2px solid var(--bronze)}
-.pin-km{position:absolute;left:50%;top:52%;transform:translateX(-50%);background:rgba(240,229,207,.93);padding:5px 10px;font-family:var(--mono);font-size:clamp(9px,.85vw,11px);letter-spacing:.18em;color:var(--bronze);z-index:2}
+.pin{background:rgba(255,255,255,.9);padding:10px 14px}
+.pin-a{left:21.6%;top:12.8%;transform:translateY(-50%);margin-left:26px;border-left:2px solid var(--bronze)}
+.pin-b{left:73.1%;top:76.0%;transform:translate(-100%,-50%);margin-left:-26px;text-align:right;border-right:2px solid var(--bronze)}
+.pin-km{position:absolute;left:48%;top:46%;transform:translateX(-50%);background:rgba(255,255,255,.9);padding:5px 10px;font-family:var(--mono);font-size:clamp(9px,.85vw,11px);letter-spacing:.18em;color:var(--bronze);z-index:2}
 .corridor{display:none;grid-template-columns:1fr;gap:14px;padding-block:22px;border-block:1px solid var(--rule-l);margin-block:26px}
 .corridor .place{font-family:var(--display);font-weight:800;font-size:1.3rem;letter-spacing:-.02em}
 .corridor .role{font-family:var(--mono);font-size:10px;letter-spacing:.17em;text-transform:uppercase;color:rgba(18,23,16,.6);margin-top:5px}

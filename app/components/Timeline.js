@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import founder from "@/public/hero.jpeg";
 import tractorImg from "@/public/tractor.png";
 
 const chapters = [
@@ -59,68 +60,157 @@ const chapters = [
 export default function Timeline() {
   const [openId, setOpenId] = useState(null);
   const [progress, setProgress] = useState(0);
+  const [dots, setDots] = useState([]); // {left%, topPx} per chapter, set after mount
   const listRef = useRef(null);
+  const pathRef = useRef(null);
+  const poseRef = useRef(() => ({ left: 50, topPx: 0, ang: 90 }));
 
   const toggle = (n) => setOpenId((prev) => (prev === n ? null : n));
 
+  // The tractor's position down the centre line follows scroll progress.
   useEffect(() => {
-    const el = listRef.current;
-    if (!el) return;
+    const wrap = listRef.current;
+    const path = pathRef.current;
+    if (!wrap || !path) return;
+
+    const L = path.getTotalLength();
+
+    // path x (0..100) at a fractional y (0..1)
+    const xAtY = (fy) => {
+      let lo = 0, hi = L;
+      for (let k = 0; k < 24; k++) {
+        const mid = (lo + hi) / 2;
+        path.getPointAtLength(mid).y / 1000 < fy ? (lo = mid) : (hi = mid);
+      }
+      return path.getPointAtLength((lo + hi) / 2).x;
+    };
+
+    // screen-space pose: left%, topPx, on-screen heading angle
+    const poseAtY = (fy) => {
+      const h = wrap.getBoundingClientRect().height;
+      const w = wrap.getBoundingClientRect().width;
+      const e = 0.008;
+      const y0 = Math.max(0, fy - e), y1 = Math.min(1, fy + e);
+      const x0 = (xAtY(y0) / 100) * w, x1 = (xAtY(y1) / 100) * w;
+      const ang = Math.atan2((y1 - y0) * h, x1 - x0) * (180 / Math.PI);
+      return { left: xAtY(fy), topPx: fy * h, ang };
+    };
+    poseRef.current = poseAtY;
+
+    // pin each chapter dot onto the road at that card's vertical position
+    const layoutDots = () => {
+      const wr = wrap.getBoundingClientRect();
+      const next = [];
+      wrap.querySelectorAll(".tli").forEach((li) => {
+        const cyc = li.getBoundingClientRect().top - wr.top + 30;
+        const fy = Math.max(0, Math.min(1, cyc / wr.height));
+        next.push({ left: xAtY(fy), topPx: cyc });
+      });
+      setDots(next);
+    };
 
     let frame = 0;
     const update = () => {
       frame = 0;
-      const rect = el.getBoundingClientRect();
+      const rect = wrap.getBoundingClientRect();
       const raw = (window.innerHeight * 0.5 - rect.top) / rect.height;
       setProgress(Math.min(1, Math.max(0, raw)));
     };
     const onScroll = () => {
       if (!frame) frame = window.requestAnimationFrame(update);
     };
+    const onResize = () => {
+      layoutDots();
+      update();
+    };
 
+    layoutDots();
     update();
     window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
+    window.addEventListener("resize", onResize);
     return () => {
       window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
+      window.removeEventListener("resize", onResize);
       if (frame) window.cancelAnimationFrame(frame);
     };
   }, []);
 
+  const pose = poseRef.current(progress);
+
   return (
     <section className="chapters" id="chapters">
       <div className="wrap">
-        <div className="sec-head">
-          <span className="sec-num">01</span>
-          <h2 className="sec-title">Seven chapters</h2>
+        <div className="ch-head">
+          <figure className="portrait">
+            <i className="corner tl" />
+            <i className="corner tr" />
+            <i className="corner bl" />
+            <i className="corner br" />
+            <div className="imgbox">
+              <Image
+                src={founder}
+                alt="The founder of Narejo Farms holding two of his goats"
+                sizes="(max-width: 1080px) 280px, 300px"
+                placeholder="blur"
+              />
+            </div>
+            <figcaption>Mirpurkhas, Sindh</figcaption>
+          </figure>
+
+          <div>
+            <div className="sec-head">
+              <span className="sec-num">01</span>
+              <h2 className="sec-title">Seven chapters</h2>
+            </div>
+            <p className="ch-intro">
+              Eight years, told in his own words. Open any chapter to read it in
+              full.
+            </p>
+          </div>
         </div>
-        <p className="ch-intro">
-          Eight years, told in his own words. Open any chapter to read it in
-          full.
-        </p>
 
         <div className="tl-wrap" ref={listRef}>
+          <svg
+            className="road-svg"
+            viewBox="0 0 100 1000"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+          >
+            <path ref={pathRef} className="road-bed" d={"M 50 0 C 51.33 23.33 59.17 91.67 58 140 C 56.83 188.33 43.33 240 43 290 C 42.67 340 55.67 388.33 56 440 C 56.33 491.67 44.83 546.67 45 600 C 45.17 653.33 56.67 710 57 760 C 57.33 810 48.17 860 47 900 C 45.83 940 49.5 983.33 50 1000"} />
+            <path className="road-mid" d={"M 50 0 C 51.33 23.33 59.17 91.67 58 140 C 56.83 188.33 43.33 240 43 290 C 42.67 340 55.67 388.33 56 440 C 56.33 491.67 44.83 546.67 45 600 C 45.17 653.33 56.67 710 57 760 C 57.33 810 48.17 860 47 900 C 45.83 940 49.5 983.33 50 1000"} />
+          </svg>
+
           <Image
             className="tractor"
             src={tractorImg}
             alt=""
             aria-hidden="true"
-            width={54}
-            height={54}
-            style={{ top: `calc(${progress} * (100% - 54px))` }}
+            width={52}
+            height={52}
+            style={{
+              left: `${pose.left}%`,
+              top: `${pose.topPx}px`,
+              transform: `translate(-50%,-50%) rotate(${pose.ang}deg)`,
+            }}
           />
 
           <ol className="tl">
             {chapters.map((c, i) => {
               const open = openId === c.n;
               const bodyId = `tl-body-${c.n}`;
+              const dot = dots[i];
               return (
                 <li
                   key={c.n}
                   className={`tli${i % 2 ? " flip" : ""}${open ? " open" : ""}`}
                 >
-                  <span className="dot" aria-hidden="true" />
+                  <span
+                    className="dot"
+                    aria-hidden="true"
+                    style={
+                      dot ? { left: `${dot.left}%`, top: `${dot.topPx}px` } : undefined
+                    }
+                  />
                   <div className="tle">
                     <button
                       type="button"

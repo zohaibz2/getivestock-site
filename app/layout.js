@@ -1,15 +1,16 @@
-import { Bricolage_Grotesque, Newsreader, Space_Mono } from "next/font/google";
+import { Bricolage_Grotesque, Poppins, Space_Mono } from "next/font/google";
 import "./globals.css";
 
-// Bricolage Grotesque and Newsreader are variable fonts, so no `weight` is needed.
+// Bricolage Grotesque is a variable font, so no `weight` is needed.
 const display = Bricolage_Grotesque({
   subsets: ["latin"],
   variable: "--font-display",
   display: "swap",
 });
 
-const body = Newsreader({
+const body = Poppins({
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600"],
   style: ["normal", "italic"],
   variable: "--font-body",
   display: "swap",

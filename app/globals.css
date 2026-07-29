@@ -47,9 +47,9 @@ a{color:inherit}
 
 /* ============ HERO (paper poster) ============ */
 .hero{background:var(--paper);overflow:hidden}
-.hero .hero-copy{padding-top:8px}
-.hero-grid{display:grid;grid-template-columns:1fr minmax(300px,46%);gap:clamp(24px,4vw,52px);align-items:center;min-height:clamp(560px,72vh,860px)}
-.hero-copy{padding-block:clamp(44px,6vw,72px);position:relative;z-index:2}
+.hero .hero-copy{padding-top:clamp(28px,4vw,52px)}
+.hero-grid{display:grid;grid-template-columns:1fr minmax(300px,46%);gap:clamp(24px,4vw,52px);align-items:start;min-height:0}
+.hero-copy{padding-top:clamp(28px,4vw,52px);padding-bottom:clamp(20px,3vw,36px);position:relative;z-index:2}
 .hero .eyebrow{color:var(--bronze);margin-bottom:20px}
 .h1{font-family:var(--display);font-weight:800;font-size:clamp(2.7rem,7.6vw,5.4rem);line-height:.9;letter-spacing:-.038em;text-wrap:balance}
 .h1 em{font-style:normal;color:var(--bronze)}
@@ -65,9 +65,9 @@ a{color:inherit}
 .pact-quote span{display:block;font-style:normal;font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;margin-top:11px;color:rgba(18,23,16,.5)}
 
 /* the brushstroke bleeds off the right edge */
-.ribbon{position:relative;align-self:stretch;display:flex;align-items:center;
+.ribbon{position:relative;display:flex;align-items:flex-start;
   margin-right:calc(-1 * var(--gut))}
-.ribbon img{width:100%;height:auto}
+.ribbon img{width:100%;height:auto;max-height:640px;object-fit:contain;object-position:top}
 
 /* ============ CHAPTERS ============ */
 .chapters{background:var(--chalk);padding-block:clamp(56px,8vw,104px)}

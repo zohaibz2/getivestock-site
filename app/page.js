@@ -1,45 +1,209 @@
 import Image from "next/image";
 import Header from "./components/Header";
-import hero from "@/public/hero.jpeg";
+import Timeline from "./components/Timeline";
+import ribbon from "@/public/ribbon.jpg";
+import plat from "@/public/plat.jpg";
+import logo from "@/public/logo.jpeg";
+
+const asks = [
+  "Buying for Qurbani in Karachi and want animals raised, not flipped.",
+  "Investing in the herd, with a return and a timeline written down.",
+  "Working the land in Mirpurkhas — feed, veterinary, transport.",
+  "Here for the schooling side of it, for the children in the village.",
+];
 
 export default function Home() {
   return (
-    <div className="page">
+    <>
       <Header />
 
-      <main className="hero">
-        <div className="hero-text">
-          <p className="eyebrow">The Journey</p>
-          <h1 className="headline">
-            The Future of
-            <br />
-            Livestock Farming
-          </h1>
-          <p className="subtext">
-            A business student&apos;s journey toward a smarter, healthier future
-            for goat farming. Currently doing a Bachelor&apos;s in Business
-            Administration at Forman Christian College Lahore — the plan? Finish
-            the degree. Skip the job. Run back to the goats.
+      {/* ---------------- HERO ---------------- */}
+      <section className="hero" id="top">
+        <div className="wrap hero-grid">
+          <div className="hero-copy">
+            <p className="eyebrow">Mirpurkhas, Sindh · Since 2017</p>
+            <h1 className="h1">
+              Goats and buffalo,
+              <br />
+              <em>raised properly.</em>
+            </h1>
+            <p className="hero-lede">
+              A working farm on land of our own in Mirpurkhas, supplying Qurbani
+              buyers in Karachi.
+            </p>
+
+            <div className="pact">
+              <div className="tally" aria-hidden="true">
+                {Array.from({ length: 10 }, (_, i) => (
+                  <i key={i} className={i < 5 ? "spent" : undefined} />
+                ))}
+              </div>
+              <p className="tally-cap">
+                <b>5 of 10</b> · halfway through the promise
+              </p>
+              <p className="pact-quote">
+                {"“I made a pact with myself: I would not quit until I had rebuilt this business from scratch at least 10 times.”"}
+                <span>Chapter 3 · 2020</span>
+              </p>
+            </div>
+          </div>
+
+          <div className="ribbon">
+            <Image
+              src={ribbon}
+              alt="Illustration of the farm — pens, goats, buffalo in the water channel and a canal cutting through the fields — held inside a single green brushstroke"
+              sizes="(max-width: 1080px) 90vw, 46vw"
+              priority
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* ---------------- 01 SEVEN CHAPTERS ---------------- */}
+      <Timeline />
+
+      {/* ---------------- QUOTE BAND ---------------- */}
+      <section className="band">
+        <div className="wrap">
+          <div className="band-in">
+            <p className="band-q">
+              {"“I wasn't here for the quick buck. I was here to fix the supply chain.”"}
+            </p>
+            <p className="band-a">Chapter 4 · 2021</p>
+          </div>
+        </div>
+      </section>
+
+      {/* ---------------- 02 THE CORRIDOR ---------------- */}
+      <section className="mission" id="mission">
+        <div className="wrap">
+          <div className="sec-head">
+            <span className="sec-num">02</span>
+            <h2 className="sec-title">Why the corridor</h2>
+          </div>
+          <p className="mission-lede">
+            An animal raised in Mirpurkhas is worth roughly double 250
+            kilometres away in Karachi. We carry it that distance ourselves, so
+            the value stays with the people who raised it.
           </p>
-          <a className="btn btn-pill hero-cta" href="#">
-            Explore the Journey
-            <span className="arrow" aria-hidden="true">
-              &rarr;
-            </span>
-          </a>
         </div>
 
-        <div className="hero-media">
+        <div className="plat">
           <Image
-            src={hero}
-            alt="A farmer surrounded by goats at a livestock farm"
-            fill
-            sizes="(max-width: 900px) 100vw, 50vw"
-            style={{ objectFit: "cover", borderRadius: "var(--radius-photo)" }}
-            priority
+            src={plat}
+            alt="Survey-style drawing of the 250 kilometre route between Mirpurkhas and Karachi, with dense tree cover at the Mirpurkhas end thinning to empty ground at the Karachi end"
+            sizes="100vw"
           />
+          <div className="pin pin-a">
+            <p className="place">Karachi</p>
+            <p className="role">Where it is paid for</p>
+          </div>
+          <div className="pin pin-b">
+            <p className="place">Mirpurkhas</p>
+            <p className="role">Where it is raised</p>
+          </div>
+          <p className="pin-km">250 km</p>
         </div>
-      </main>
-    </div>
+
+        <div className="wrap">
+          {/* Shown instead of the map pins below 820px, where they would collide. */}
+          <div className="corridor">
+            <div>
+              <p className="place">Mirpurkhas</p>
+              <p className="role">Where it is raised</p>
+            </div>
+            <p className="km">↓ 250 km</p>
+            <div>
+              <p className="place">Karachi</p>
+              <p className="role">Where it is paid for</p>
+            </div>
+          </div>
+
+          <div className="gaps">
+            <div className="gap-r">
+              <p className="what">Tomatoes, per kilo</p>
+              <p className="pair">
+                <span className="lo">Rs 10</span>
+                <span className="arrow">→</span>
+                <span className="hi">Rs 200</span>
+              </p>
+              <p className="say">
+                Twenty times the price, one road apart. None of it goes back to
+                the grower.
+              </p>
+            </div>
+            <div className="gap-r">
+              <p className="what">Goats at Qurbani</p>
+              <p className="pair">
+                <span className="lo">Village</span>
+                <span className="arrow">→</span>
+                <span className="hi">×2 in the city</span>
+              </p>
+              <p className="say">
+                Sell where the buyers are, and the same animal is worth double.
+                That is the whole thesis.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ---------------- 03 WORK WITH US ---------------- */}
+      <section className="talk" id="talk">
+        <div className="wrap talk-grid">
+          <div>
+            <div className="sec-head">
+              <span className="sec-num">03</span>
+              <h2 className="sec-title">Rebuild number six</h2>
+            </div>
+            <p className="big">
+              There is land in Mirpurkhas now, bought in secret in 2024, and
+              five rebuilds left on the pact. If any of the following is you,
+              get in touch.
+            </p>
+            <div className="cta-row">
+              {/* Not linked yet. To wire up, swap <button> for:
+                  <a className="btn solid" href="mailto:you@yourdomain.com">…</a> */}
+              <button className="btn solid" type="button">
+                Start a conversation
+              </button>
+              <button className="btn ghost" type="button">
+                Read the seven chapters
+              </button>
+            </div>
+          </div>
+
+          <div className="asks">
+            {asks.map((text, i) => (
+              <div key={i}>
+                <span>{String(i + 1).padStart(2, "0")}</span>
+                <p>{text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ---------------- FOOTER ---------------- */}
+      <footer className="foot">
+        <div className="wrap foot-in">
+          <div className="foot-brand">
+            <span className="foot-logo">
+              <Image src={logo} alt="Narejo Farms logo" width={52} height={52} />
+            </span>
+            <span>
+              <span className="foot-name">Narejo Farms</span>
+              <span className="foot-where">Mirpurkhas · Karachi</span>
+            </span>
+          </div>
+          <div className="foot-r">
+            <p className="foot-mail">Contact details to follow</p>
+            <p style={{ marginTop: 8, opacity: 0.5 }}>
+              Est. 2017 · Sindh, Pakistan
+            </p>
+          </div>
+        </div>
+      </footer>
+    </>
   );
 }

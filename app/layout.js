@@ -1,29 +1,39 @@
-import { Inter, Playfair_Display } from "next/font/google";
+import { Bricolage_Grotesque, Newsreader, Space_Mono } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
+// Bricolage Grotesque and Newsreader are variable fonts, so no `weight` is needed.
+const display = Bricolage_Grotesque({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
-  variable: "--font-inter",
+  variable: "--font-display",
   display: "swap",
 });
 
-const playfair = Playfair_Display({
+const body = Newsreader({
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
-  variable: "--font-playfair",
+  style: ["normal", "italic"],
+  variable: "--font-body",
+  display: "swap",
+});
+
+const mono = Space_Mono({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-mono",
   display: "swap",
 });
 
 export const metadata = {
-  title: "Getlivestock — The Future of Livestock Farming",
+  title: "Narejo Farms — Goats and buffalo, raised properly",
   description:
-    "A business student's journey toward a smarter, healthier future for goat farming.",
+    "A working goat and buffalo farm on our own land in Mirpurkhas, Sindh, supplying Qurbani buyers in Karachi.",
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
+    <html
+      lang="en"
+      className={`${display.variable} ${body.variable} ${mono.variable}`}
+    >
       <body>{children}</body>
     </html>
   );

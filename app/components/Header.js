@@ -1,48 +1,34 @@
-"use client";
-
-import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import logo from "@/public/logo.jpeg";
 
 const navLinks = [
-  { label: "Our Story", href: "/our-story" },
-  { label: "Our Ecosystem", href: "#" },
-  { label: "Impact", href: "#" },
-  { label: "Contact", href: "#" },
+  { label: "Seven chapters", href: "#chapters" },
+  { label: "The corridor", href: "#mission" },
 ];
 
 export default function Header() {
-  const pathname = usePathname();
-
   return (
-    <header className="header">
-      <Link className="brand" href="/">
-        <Image src={logo} alt="Getlivestock logo" width={88} height={88} priority />
-      </Link>
+    <header className="top">
+      <div className="wrap top-in">
+        <Link className="mark" href="#top">
+          <span className="mark-sq">NF</span>
+          <span>
+            <span className="mark-txt">Narejo Farms</span>
+            <span className="mark-sub">Mirpurkhas, Sindh</span>
+          </span>
+        </Link>
 
-      <nav className="nav">
-        {navLinks.map(({ label, href }) => {
-          const isActive = href !== "#" && pathname === href;
-          return (
-            <Link
-              key={label}
-              href={href}
-              className={isActive ? "active" : undefined}
-              aria-current={isActive ? "page" : undefined}
-            >
+        <nav>
+          {navLinks.map(({ label, href }) => (
+            <a key={href} href={href}>
               {label}
-            </Link>
-          );
-        })}
-      </nav>
+            </a>
+          ))}
+        </nav>
 
-      <a className="btn btn-pill header-cta" href="#">
-        Explore Our Ecosystem
-        <span className="arrow" aria-hidden="true">
-          &rarr;
-        </span>
-      </a>
+        <a className="top-cta" href="#talk">
+          Work with us
+        </a>
+      </div>
     </header>
   );
 }

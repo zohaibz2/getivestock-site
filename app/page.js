@@ -17,9 +17,9 @@ export default function Home() {
           <div className="hero-copy">
             <p className="eyebrow">Mirpurkhas, Sindh · Since 2017</p>
             <h1 className="h1">
-              Goats and buffalo,
+              Eight years raising livestock,
               <br />
-              <em>raised properly.</em>
+              <em>from Sindh to Karachi.</em>
             </h1>
             <p className="pact-quote">
               {"“I made a pact with myself: I would not quit until I had rebuilt this business from scratch at least 10 times.”"}

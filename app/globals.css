@@ -48,10 +48,10 @@ a{color:inherit}
 /* ============ HERO (paper poster) ============ */
 .hero{background:var(--paper);overflow:hidden}
 .hero .hero-copy{padding-top:clamp(28px,4vw,52px)}
-.hero-grid{display:grid;grid-template-columns:1fr minmax(300px,46%);gap:clamp(24px,4vw,52px);align-items:start;min-height:0}
+.hero-grid{display:grid;grid-template-columns:1.25fr minmax(280px,40%);gap:clamp(24px,4vw,52px);align-items:start;min-height:0}
 .hero-copy{padding-top:clamp(28px,4vw,52px);padding-bottom:clamp(20px,3vw,36px);position:relative;z-index:2}
 .hero .eyebrow{color:var(--bronze);margin-bottom:20px}
-.h1{font-family:var(--display);font-weight:800;font-size:clamp(2.7rem,7.6vw,5.4rem);line-height:.9;letter-spacing:-.038em;text-wrap:balance}
+.h1{font-family:var(--display);font-weight:800;font-size:clamp(2.3rem,6vw,4.5rem);line-height:.98;letter-spacing:-.032em;text-wrap:balance}
 .h1 em{font-style:normal;color:var(--bronze)}
 .hero-lede{font-family:var(--body);font-weight:300;font-size:clamp(1.05rem,1.7vw,1.3rem);line-height:1.5;max-width:33ch;margin-top:26px;color:rgba(18,23,16,.74)}
 

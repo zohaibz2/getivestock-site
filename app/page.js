@@ -27,9 +27,9 @@ export default function Home() {
               <br />
               <em>raised properly.</em>
             </h1>
-            <p className="hero-lede">
-              A working farm on land of our own in Mirpurkhas, supplying Qurbani
-              buyers in Karachi.
+            <p className="pact-quote">
+              {"“I made a pact with myself: I would not quit until I had rebuilt this business from scratch at least 10 times.”"}
+              <span>Chapter 3 · 2020</span>
             </p>
           </div>
 

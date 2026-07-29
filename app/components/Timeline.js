@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import founder from "@/public/hero.jpeg";
 import tractorImg from "@/public/tractor.png";
 
 const chapters = [
@@ -64,7 +63,6 @@ export default function Timeline() {
 
   const toggle = (n) => setOpenId((prev) => (prev === n ? null : n));
 
-  // The tractor's position down the centre line follows scroll progress.
   useEffect(() => {
     const el = listRef.current;
     if (!el) return;
@@ -93,34 +91,14 @@ export default function Timeline() {
   return (
     <section className="chapters" id="chapters">
       <div className="wrap">
-        <div className="ch-head">
-          <figure className="portrait">
-            <i className="corner tl" />
-            <i className="corner tr" />
-            <i className="corner bl" />
-            <i className="corner br" />
-            <div className="imgbox">
-              <Image
-                src={founder}
-                alt="The founder of Narejo Farms holding two of his goats"
-                sizes="(max-width: 1080px) 280px, 300px"
-                placeholder="blur"
-              />
-            </div>
-            <figcaption>Mirpurkhas, Sindh</figcaption>
-          </figure>
-
-          <div>
-            <div className="sec-head">
-              <span className="sec-num">01</span>
-              <h2 className="sec-title">Seven chapters</h2>
-            </div>
-            <p className="ch-intro">
-              Eight years, told in his own words. Open any chapter to read it in
-              full.
-            </p>
-          </div>
+        <div className="sec-head">
+          <span className="sec-num">01</span>
+          <h2 className="sec-title">Seven chapters</h2>
         </div>
+        <p className="ch-intro">
+          Eight years, told in his own words. Open any chapter to read it in
+          full.
+        </p>
 
         <div className="tl-wrap" ref={listRef}>
           <Image

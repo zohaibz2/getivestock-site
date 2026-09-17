@@ -4,7 +4,6 @@ import Timeline from "./components/Timeline";
 import CaseStudies from "./components/CaseStudies";
 import ribbon from "@/public/ribbon.jpg";
 import plat from "@/public/plat.jpg";
-import logo from "@/public/logo.jpeg";
 
 
 export default function Home() {
@@ -108,13 +107,9 @@ export default function Home() {
       <footer className="foot">
         <div className="wrap foot-in">
           <div className="foot-brand">
-            <span className="foot-logo">
-              <Image src={logo} alt="Narejo Farms logo" width={52} height={52} />
-            </span>
-            <span>
-              <span className="foot-name">Narejo Farms</span>
-              <span className="foot-where">Mirpurkhas · Karachi</span>
-            </span>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img className="foot-logo-img" src="/logo.svg" alt="Narejo Farms" />
+            <span className="foot-where">Mirpurkhas · Karachi</span>
           </div>
           <div className="foot-r">
             <p className="foot-mail">Contact details to follow</p>

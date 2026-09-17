@@ -11,12 +11,9 @@ export default function Header() {
     <div className="top-shell">
       <header className="top">
         <div className="top-in">
-          <Link className="mark" href="#top">
-            <span className="mark-sq">NF</span>
-            <span>
-              <span className="mark-txt">Narejo Farms</span>
-              <span className="mark-sub">Mirpurkhas, Sindh</span>
-            </span>
+          <Link className="mark" href="#top" aria-label="Narejo Farms — home">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img className="brand-logo" src="/logo.svg" alt="Narejo Farms" />
           </Link>
 
           <nav>

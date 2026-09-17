@@ -3,6 +3,7 @@ import Link from "next/link";
 const navLinks = [
   { label: "Seven chapters", href: "#chapters" },
   { label: "The corridor", href: "#mission" },
+  { label: "Case studies", href: "#cases" },
 ];
 
 export default function Header() {

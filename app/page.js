@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Header from "./components/Header";
 import Timeline from "./components/Timeline";
+import CaseStudies from "./components/CaseStudies";
 import ribbon from "@/public/ribbon.jpg";
 import plat from "@/public/plat.jpg";
 import logo from "@/public/logo.jpeg";
@@ -99,6 +100,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* ---------------- 03 CASE STUDIES ---------------- */}
+      <CaseStudies />
 
       {/* ---------------- FOOTER ---------------- */}
       <footer className="foot">

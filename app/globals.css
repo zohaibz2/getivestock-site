@@ -148,6 +148,29 @@ a{color:inherit}
 .gap-r .arrow{font-family:var(--mono);font-size:15px;color:rgba(27,27,27,.4)}
 .gap-r .say{font-family:var(--body);font-weight:300;font-size:.98rem;line-height:1.55;color:rgba(27,27,27,.7);margin-top:11px;max-width:40ch}
 
+/* ============ CASE STUDIES (articles-style grid) ============ */
+.cases{background:var(--paper);padding-block:clamp(56px,8vw,104px)}
+.cases .sec-head{margin-bottom:16px}
+.cases-lede{font-family:var(--body);font-weight:300;font-size:clamp(1.04rem,1.6vw,1.22rem);line-height:1.55;max-width:52ch;color:rgba(27,27,27,.72);margin-bottom:clamp(24px,3.5vw,38px)}
+.cat-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.cat{font-family:var(--body);font-weight:500;font-size:.92rem;letter-spacing:.01em;color:var(--ink);background:none;border:1px solid rgba(27,27,27,.2);padding:8px 18px;border-radius:999px;cursor:pointer;transition:background .16s,color .16s,border-color .16s}
+.cat:hover,.cat:focus-visible{border-color:var(--terra);color:var(--terra-ink)}
+.cat.on{background:var(--terra);border-color:var(--terra);color:var(--ink)}
+.cat.on:hover,.cat.on:focus-visible{color:var(--ink)}
+.cases-rule{border:none;border-top:1px solid var(--rule-l);margin:clamp(22px,3vw,32px) 0 clamp(28px,4vw,44px)}
+.case-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:clamp(24px,3vw,40px)}
+.case{display:flex;flex-direction:column}
+.case-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+.case-date{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(27,27,27,.55)}
+.case-tag{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--terra-ink);border:1px solid rgba(185,120,96,.5);padding:5px 11px;border-radius:999px;white-space:nowrap}
+.case-img{position:relative;aspect-ratio:4/3;border-radius:12px;overflow:hidden;background:rgba(185,120,96,.1);border:1px solid rgba(27,27,27,.06);display:grid;place-items:center}
+.case-img>span{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:rgba(185,120,96,.7)}
+.case-img img{width:100%;height:100%;object-fit:cover}
+.case-title{font-family:var(--display);font-weight:700;font-size:clamp(1.2rem,1.9vw,1.42rem);line-height:1.14;letter-spacing:-.02em;color:var(--ink);margin-top:18px;transition:color .16s}
+.case:hover .case-title{color:var(--terra-ink)}
+.case-ex{font-family:var(--body);font-weight:300;font-size:.98rem;line-height:1.55;color:rgba(27,27,27,.7);margin-top:10px}
+.case-more{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--terra-ink);margin-top:14px;border-bottom:1px solid rgba(185,120,96,.45);padding-bottom:2px;align-self:flex-start}
+
 /* ============ TALK (dark) ============ */
 .talk{background:var(--cream);color:var(--ink);padding-block:clamp(56px,8vw,104px)}
 .talk .sec-num{opacity:.5}
